@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CoreModule } from '@sunbird/core';
 import { SuiModule } from 'ng2-semantic-ui';
-
+import { SharedModule } from '@sunbird/shared';
 import { EditorRoutingModule } from './editor-routing.module';
 import { CollectionTreeComponent,  FancyTreeComponent, QuestionTemplateComponent, QuestionBaseComponent,
 ContentplayerPageComponent } from './components';
@@ -29,6 +29,7 @@ import { CommonConsumptionModule } from '@project-sunbird/common-consumption';
     SuiModule,
     ReactiveFormsModule,
     EditorRoutingModule,
+    SharedModule,
     // PlayerHelperModule
     CbseProgramModule,
     CommonConsumptionModule
