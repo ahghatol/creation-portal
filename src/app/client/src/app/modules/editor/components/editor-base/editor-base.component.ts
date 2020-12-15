@@ -1,3 +1,4 @@
+import { event } from 'jquery';
 import { Component, OnInit } from '@angular/core';
 import { TreeService, EditorService } from '../../services';
 import { toolbarConfig, collectionTreeNodes } from '../../editor.config';
@@ -20,6 +21,7 @@ export class EditorBaseComponent implements OnInit {
   toolbarConfig = toolbarConfig;
   public showQuestionTemplate: Boolean = false;
   private editorParams: IeditorParams;
+  public showResourceModal: Boolean = false;
 
   constructor(public treeService: TreeService, private editorService: EditorService, private activatedRoute: ActivatedRoute) {
     this.editorParams = {
@@ -41,6 +43,9 @@ export class EditorBaseComponent implements OnInit {
       case 'saveContent':
         this.saveContent();
         break;
+      case 'addResource':
+        this.showResourceModal = true;
+      break;
       default:
         break;
     }
@@ -55,7 +60,6 @@ export class EditorBaseComponent implements OnInit {
   }
 
   treeEventListener(event: any) {
-    console.log(event);
     switch (event.type) {
       case 'nodeSelect':
         this.selectedQuestionData = event.data;
@@ -63,5 +67,13 @@ export class EditorBaseComponent implements OnInit {
       default:
         break;
     }
+  }
+
+  onProceedClick(event: any) {
+    console.log(event);
+  }
+
+  closeResourceModal() {
+    this.showResourceModal = false;
   }
 }

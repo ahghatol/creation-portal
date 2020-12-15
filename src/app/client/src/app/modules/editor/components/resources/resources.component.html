@@ -1,0 +1,36 @@
+<div class="sb-modal-header">
+  {{resource?.frmelmnts?.resource?.select}}Find & Select Resources
+</div>
+<div class="sb-modal-content">
+  <div class="sb-search-box medium">
+    <div class="input-div relative">
+        <i class="search icon"></i>
+        <input name="query" class="sb-search-input" type="text" placeholder="Search..." />
+        <i class="close icon"></i>
+        <!-- <div class="sb-loader"></div> -->
+    </div>
+    <button class="sb-btn sb-btn-normal">Search</button>
+  </div>
+
+  <!--Default cards on page load-->
+  <div *ngIf="defaultGridScreen">
+    <div *ngFor="let section of defaultContentList; let last = last" [ngClass]="{'last mb-0':last}">
+      <sb-library-cards-grid [title]="section.name" [contentList]="section.contents" [maxCardCount]="3" (cardCheckUncheck)="onCardCheckUncheck($event)"
+      [viewMoreButtonText]="viewAllButtonText" (viewMoreClick)="showAllList($event, section)" [isLoading]="isLoading">
+      </sb-library-cards-grid>
+    </div>
+  </div>
+  <!--view all-->
+  <div *ngIf="!defaultGridScreen">
+    <sb-library-cards-grid [title]="sectionName" [contentList]="contentList" (cardCheckUncheck)="onCardCheckUncheck($event)" [type]="'infinite_card_grid'" [isLoading]="isLoading">
+    </sb-library-cards-grid>
+  </div>
+</div>
+<div class="sb-modal-actions">
+  <button class="sb-btn sb-btn-normal sb-btn-primary" (click)="proceedClick($event)">
+    {{resource?.frmelmnts?.btn?.proceed}}PROCEED
+  </button>
+  <button class="sb-btn sb-btn-normal sb-btn-outline-primary" (click)="backClick()">
+    {{resource?.frmelmnts?.btn?.back}}BACK
+  </button>
+</div>
